@@ -5,12 +5,12 @@
   <title>Angularv14</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'nonce-random-csp-nonce';">
+  <meta name="CSP-NONCE" content="random-csp-nonce"/>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://material.angular.io https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'nonce-random-csp-nonce';">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" nonce="random-csp-nonce" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" nonce="random-csp-nonce" rel="stylesheet">
 </head>
 <body class="mat-typography">
   <app-root></app-root>
