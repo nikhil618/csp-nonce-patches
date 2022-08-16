@@ -24,14 +24,14 @@ export const NAMESPACE_URIS: { [ns: string]: string } = {
 export class CustomDomRenderer extends ɵDomRendererFactory2 {
     override defaultRenderer: Renderer2;
     constructor(
-        eventManager: EventManager, sharedStylesHost: ɵDomSharedStylesHost,
-        @Inject(APP_ID) appId: string, @Inject(ɵDomSharedStylesHost) private customDomSharedStylesHost: CustomDomSharedStylesHost) {
-        super(eventManager, sharedStylesHost, appId);
+        eventManager: EventManager, @Inject(ɵDomSharedStylesHost) sharedStylesHost: CustomDomSharedStylesHost,
+        @Inject(APP_ID) appId: string) {
+        super(eventManager, sharedStylesHost as unknown as ɵDomSharedStylesHost, appId);
         this.defaultRenderer = new CustomDefaultDomRenderer2(eventManager);
         styleSheet = styleSheet || document.createElement('style');
         styleSheet.setAttribute('id', '__dyn__');
-        if (customDomSharedStylesHost.nonce) {
-            styleSheet.setAttribute('nonce', customDomSharedStylesHost.nonce)
+        if (sharedStylesHost.nonce) {
+            styleSheet.setAttribute('nonce', sharedStylesHost.nonce)
         }
         document.head.appendChild(styleSheet);
     }
@@ -128,7 +128,6 @@ class CustomDefaultDomRenderer2 extends Renderer2 {
                 // TODO: inline styles have higher specificity so use !important for ${value} below
                 styleSheet.innerHTML += `.${className} { ${value} }`;
             }
-            console.log(className);
             el.classList.add(className);
         } else {
             el.setAttribute(name, value);

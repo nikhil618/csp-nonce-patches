@@ -35,6 +35,7 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "https://nikhil618.github.io/csp-nonce-patches/",
               "budgets": [
                 {
                   "type": "initial",
